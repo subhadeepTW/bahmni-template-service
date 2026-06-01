@@ -51,7 +51,7 @@ const config = [
       globals: globals.node,
       parser: tseslint.parser,
       parserOptions: {
-        projectService: true,
+        project: './tsconfig.eslint.json',
         ecmaVersion: 'latest',
         sourceType: 'module',
       },

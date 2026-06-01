@@ -8,7 +8,15 @@
  */
 
 import { Request, Response } from 'express';
-import { DEFAULT_LOCALE, HEADER_AUTHORIZATION, HEADER_SESSION_ID, HTTP_STATUS, JSESSIONID_PREFIX, LOCALE_REGEX, RENDER_FORMAT } from './constants';
+import {
+  DEFAULT_LOCALE,
+  HEADER_AUTHORIZATION,
+  HEADER_SESSION_ID,
+  HTTP_STATUS,
+  JSESSIONID_PREFIX,
+  LOCALE_REGEX,
+  RENDER_FORMAT,
+} from './constants';
 import { AppError } from './errors';
 import logger from './logger';
 import { executePipeline } from './template/renderPipeline';
@@ -51,9 +59,7 @@ export async function renderTemplate(
   } = req.body as RenderRequest;
 
   if (!templateId) {
-    res
-      .status(400)
-      .json({ message: 'templateId is required' });
+    res.status(400).json({ message: 'templateId is required' });
     return;
   }
 

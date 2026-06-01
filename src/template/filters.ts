@@ -38,7 +38,9 @@ export function calculateAge(birthDate: string): string {
   const days = Math.floor((now.getTime() - birth.getTime()) / 86_400_000);
   const months =
     (now.getFullYear() - birth.getFullYear()) * 12 +
-    now.getMonth() - birth.getMonth() - (now.getDate() < birth.getDate() ? 1 : 0);
+    now.getMonth() -
+    birth.getMonth() -
+    (now.getDate() < birth.getDate() ? 1 : 0);
   const years = Math.floor(months / 12);
   const p = (n: number, w: string) => `${n} ${w}${n !== 1 ? 's' : ''}`;
   if (days < 30) return p(days, 'day');

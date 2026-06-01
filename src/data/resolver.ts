@@ -19,7 +19,6 @@ import {
 import logger from '../logger';
 import { AuthHeaders, DataConfig, DataSource, ResolvedSources } from '../types';
 
-
 export async function resolve(
   dataConfig: DataConfig,
   context: Record<string, string> | undefined,
@@ -57,7 +56,10 @@ async function fetchSources(
           headers,
           timeout: REQUEST_TIMEOUT_MS,
         });
-        logger.info({ sourceName, status: response.status }, 'DataResolver: source fetched');
+        logger.info(
+          { sourceName, status: response.status },
+          'DataResolver: source fetched',
+        );
         return [sourceName, response.data] as [string, unknown];
       } catch (err) {
         if (axios.isAxiosError(err)) {
