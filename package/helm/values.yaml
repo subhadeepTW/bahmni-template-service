@@ -1,0 +1,34 @@
+global:
+  nodeSelector: {}
+  affinity: {}
+  tolerations: {}
+
+replicaCount: 1
+
+metadata:
+  labels:
+    environment: dev
+
+image:
+  repository: bahmni
+  name: bahmni-template-service
+  tag: latest
+
+config:
+  NODE_ENV: ""
+  PORT: "8080"
+  OPENMRS_URL: ""
+  TEMPLATES_DIR: ""
+  TZ: "" 
+
+service:
+  type: ClusterIP
+  port: 8080
+
+autoscaling:
+  enabled: false
+
+
+nodeSelector: {}
+affinity: {}
+tolerations: {}
