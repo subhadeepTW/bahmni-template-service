@@ -48,6 +48,16 @@ spec:
       {{ end }}
       {{ end }}
 
+      {{- if .Values.initContainer.enabled }}
+      initContainers:
+        - name: template-loader
+          image: "{{ .Values.initContainer.image.repository }}:{{ .Values.initContainer.image.tag }}"
+          command: ["cp", "-r", "/templates/.", "/shared-templates/"]
+          volumeMounts:
+            - name: bahmni-config
+              mountPath: /shared-templates
+      {{- end }}
+
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}/{{ .Values.image.name }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
@@ -55,12 +65,16 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ .Chart.Name }}-config
-                optional: false  
-          volumeMounts:            
+                optional: false
+          volumeMounts:
             - mountPath: /etc/bahmni-config/print-templates
               name: bahmni-config
       volumes:
         - name: bahmni-config
+          {{- if .Values.initContainer.enabled }}
+          emptyDir: {}
+          {{- else }}
           persistentVolumeClaim:
-            claimName: bahmni-config-pvc              
+            claimName: bahmni-config-pvc
+          {{- end }}
       restartPolicy: Always

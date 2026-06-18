@@ -4,6 +4,12 @@ global:
   tolerations: {}
   TZ: "UTC"
 
+initContainer:
+  enabled: false
+  image:
+    repository: yourregistry.azurecr.io/systemx-document-templates
+    tag: latest
+
 replicaCount: 1
 
 metadata:
