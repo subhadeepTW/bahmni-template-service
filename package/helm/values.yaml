@@ -17,8 +17,8 @@ image:
 
 config:
   NODE_ENV: "production"
-  PORT: "http://openmrs:8080"
-  OPENMRS_URL: ""
+  OPENMRS_URL: "http://openmrs:8080"
+  PORT: "8080"
   TEMPLATES_DIR: "/etc/bahmni_config/print-templates"
 
 service:
