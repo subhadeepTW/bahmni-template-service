@@ -7,7 +7,7 @@ global:
 initContainer:
   enabled: false
   image:
-    repository: yourregistry.azurecr.io/systemx-document-templates
+    repository: documenttemplates
     tag: latest
 
 replicaCount: 1
