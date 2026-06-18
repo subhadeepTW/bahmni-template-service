@@ -50,8 +50,8 @@ spec:
 
       {{- if .Values.initContainer.enabled }}
       initContainers:
-        - name: template-loader
-          image: "{{ .Values.initContainer.image.repository }}:{{ .Values.initContainer.image.tag }}"
+        - name: document-templates
+          image: "{{ .Values.initContainer.image.repository }}/{{ .Values.initContainer.image.name }}:{{ .Values.initContainer.image.tag | default .Chart.AppVersion }}"
           volumeMounts:
             - name: bahmni-config
               mountPath: {{ .Values.initContainer.mountPath }}
