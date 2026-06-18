@@ -24,6 +24,8 @@ config:
   PORT: "8080"
   TEMPLATES_DIR: "/etc/bahmni_config/print-templates"
 
+resources: {}  
+
 service:
   type: ClusterIP
   port: 8080
