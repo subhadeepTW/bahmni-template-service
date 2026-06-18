@@ -52,10 +52,9 @@ spec:
       initContainers:
         - name: template-loader
           image: "{{ .Values.initContainer.image.repository }}:{{ .Values.initContainer.image.tag }}"
-          command: ["cp", "-r", "/templates/.", "/shared-templates/"]
           volumeMounts:
             - name: bahmni-config
-              mountPath: /shared-templates
+              mountPath: {{ .Values.initContainer.mountPath }}
       {{- end }}
 
       containers:

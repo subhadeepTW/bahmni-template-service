@@ -9,6 +9,7 @@ initContainer:
   image:
     repository: documenttemplates
     tag: latest
+  mountPath: /app/document-templates
 
 replicaCount: 1
 
