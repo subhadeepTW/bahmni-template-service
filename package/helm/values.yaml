@@ -2,6 +2,7 @@ global:
   nodeSelector: {}
   affinity: {}
   tolerations: {}
+  TZ: ''
 
 replicaCount: 1
 
@@ -15,11 +16,10 @@ image:
   tag: latest
 
 config:
-  NODE_ENV: ""
-  PORT: "8080"
+  NODE_ENV: "production"
+  PORT: "http://openmrs:8080"
   OPENMRS_URL: ""
-  TEMPLATES_DIR: ""
-  TZ: "" 
+  TEMPLATES_DIR: "/etc/bahmni_config/print-templates"
 
 service:
   type: ClusterIP
